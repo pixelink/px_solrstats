@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2014-12-15T10:31:00Z" product-name="solr_statistic">
+		<header/>
+		<body>
+		  <trans-unit id="title">
+                <source>Solr Statistics</source>
+                <target state="translated">Solr Statistik</target>
+            </trans-unit>
+		  <trans-unit id="filetype">
+                <source>File Type</source>
+                <target state="translated">Dateityp</target>
+            </trans-unit>
+		  <trans-unit id="date">
+                <source>Date</source>
+                <target state="translated">Datum</target>
+            </trans-unit>
+		  <trans-unit id="from">
+                <source>From</source>
+                <target state="translated">Von</target>
+            </trans-unit>
+		  <trans-unit id="to">
+                <source>To</source>
+                <target state="translated">Bis</target>
+            </trans-unit>
+		  <trans-unit id="fields">
+                <source>Fields</source>
+                <target state="translated">Felder</target>
+            </trans-unit>
+		  <trans-unit id="time">
+                <source>Time</source>
+                <target state="translated">Zeit</target>
+            </trans-unit>
+		  <trans-unit id="num_found">
+                <source>Num Found</source>
+                <target state="translated">Treffer</target>
+            </trans-unit>
+		  <trans-unit id="suggestions_shown">
+                <source>Suggestions_shown</source>
+                <target state="translated">Vorschläge gezeigt</target>
+            </trans-unit>
+		  <trans-unit id="time_total">
+                <source>Time_total</source>
+                <target state="translated">Gesamtzeit</target>
+            </trans-unit>
+		  <trans-unit id="feuser_id">
+                <source>Feuser_id</source>
+                <target state="translated">User ID</target>
+            </trans-unit>
+		  <trans-unit id="keywords">
+                <source>Keywords</source>
+                <target state="translated">Suchwort/e</target>
+            </trans-unit>
+		  <trans-unit id="page">
+                <source>Page</source>
+                <target state="translated">Seiten ID</target>
+            </trans-unit>
+		  <trans-unit id="filters">
+                <source>Filters</source>
+                <target state="translated">Filter</target>
+            </trans-unit>
+		  <trans-unit id="sorting">
+                <source>Sorting</source>
+                <target state="translated">Sortierung</target>
+            </trans-unit>
+		  <trans-unit id="generatefile">
+                <source>Generate File</source>
+                <target state="translated">Datei erzeugen</target>
+            </trans-unit>
+		  <trans-unit id="error">
+                <source>Error</source>
+                <target state="translated">Fehler</target>
+            </trans-unit>
+		  <trans-unit id="noqueryfound_checkyourfilter">
+                <source>No query found. Please check your filter.</source>
+                <target state="translated">Keine Datensätze gefunden.</target>
+            </trans-unit>
+		  <trans-unit id="goback">
+                <source>Go Back</source>
+                <target state="translated">Zurück</target>
+            </trans-unit>
+		  <trans-unit id="filename">
+                <source>export</source>
+                <target state="translated">solr_statistik</target>
+            </trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,63 @@
+<f:layout name="Backend" />
+
+<f:section name="ButtonsLeft">
+Pixel-Ink
+</f:section>
+
+<f:section name="Content">
+
+	<h1>{f:translate(id: 'title')}</h1>
+	
+	<f:form method="post" action="export" name="export" object="{export}">
+		<p>
+			<strong>{f:translate(id: 'filetype')}:</strong> <f:form.select property="fileType" options="{CSV: '.CSV', XLS: '.XLS', XLSX: '.XLSX'}" />
+		</p>
+		<p> 
+			<strong>{f:translate(id: 'date')}:</strong> <label for="from">{f:translate(id: 'from')}</label>
+			<f:form.textfield id="from" property="from" placeholder="DD.MM.YYYY" />
+			<label for="to">{f:translate(id: 'to')}</label>
+			<f:form.textfield id="to" property="to" placeholder="DD.MM.YYYY" />
+		</p>
+		<p>
+			<strong>Fields:</strong><br />
+			<f:form.checkbox property="fields.num_found" value="num_found" id="num_found" /><label for="num_found">{f:translate(id: 'num_found')}</label><br />
+			<f:form.checkbox property="fields.suggestions_shown" value="suggestions_shown" id="suggestions_shown" /><label for="suggestions_shown">{f:translate(id: 'suggestions_shown')}</label><br />
+			<f:form.checkbox property="fields.time_total" value="time_total" id="time_total" /><label for="time_total">{f:translate(id: 'time_total')}</label><br />
+			<f:form.checkbox property="fields.feuser_id" value="feuser_id" id="feuser_id" /><label for="feuser_id">{f:translate(id: 'feuser_id')}</label><br />
+			<f:form.checkbox property="fields.keywords" value="keywords" id="keywords" /><label for="keywords">{f:translate(id: 'keywords')}</label><br />
+			<f:form.checkbox property="fields.page" value="page" id="page" /><label for="page">{f:translate(id: 'page')}</label><br />
+			<f:form.checkbox property="fields.filters" value="filters" id="filters" /><label for="filters">{f:translate(id: 'filters')}</label><br />
+			<f:form.checkbox property="fields.sorting" value="sorting" id="sorting" /><label for="sorting">{f:translate(id: 'sorting')}</label><br />
+		</p>
+	    <f:form.submit value="{f:translate(id: 'generatefile')}" />
+	</f:form>
+
+	
+	   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+	  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+	  <script>
+	  $(function() {
+	    $( "#from" ).datepicker({
+	      defaultDate: "+1w",
+	      dateFormat: 'dd.mm.yy',
+	      changeMonth: true,
+	      changeYear: true,
+	      numberOfMonths: 1,
+	      onClose: function( selectedDate ) {
+	        $( "#to" ).datepicker( "option", "minDate", selectedDate );
+	      }
+	    });
+	    $( "#to" ).datepicker({
+	      defaultDate: "+1w",
+	      dateFormat: 'dd.mm.yy',
+	      changeMonth: true,
+	      changeYear: true,
+	      numberOfMonths: 1,
+	      onClose: function( selectedDate ) {
+	        $( "#from" ).datepicker( "option", "maxDate", selectedDate );
+	      }
+	    });
+	  });
+	  </script>
+	  
+</f:section>

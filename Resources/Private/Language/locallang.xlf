@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2014-12-15T10:31:00Z" product-name="solr_statistic">
+		<header/>
+		<body>
+		  <trans-unit id="title">
+                <source>Solr Statistics</source>
+            </trans-unit>
+		  <trans-unit id="filetype">
+                <source>File Type</source>
+            </trans-unit>
+		  <trans-unit id="date">
+                <source>Date</source>
+            </trans-unit>
+		  <trans-unit id="from">
+                <source>From</source>
+            </trans-unit>
+		  <trans-unit id="to">
+                <source>To</source>
+            </trans-unit>
+		  <trans-unit id="fields">
+                <source>Fields</source>
+            </trans-unit>
+		  <trans-unit id="time">
+                <source>Time</source>
+            </trans-unit>
+		  <trans-unit id="num_found">
+                <source>Num Found</source>
+            </trans-unit>
+		  <trans-unit id="suggestions_shown">
+                <source>Suggestions_shown</source>
+            </trans-unit>
+		  <trans-unit id="time_total">
+                <source>Time_total</source>
+            </trans-unit>
+		  <trans-unit id="feuser_id">
+                <source>Feuser_id</source>
+            </trans-unit>
+		  <trans-unit id="keywords">
+                <source>Keywords</source>
+            </trans-unit>
+		  <trans-unit id="page">
+                <source>Page</source>
+            </trans-unit>
+		  <trans-unit id="filters">
+                <source>Filters</source>
+            </trans-unit>
+		  <trans-unit id="sorting">
+                <source>Sorting</source>
+            </trans-unit>
+		  <trans-unit id="generatefile">
+                <source>Generate File</source>
+            </trans-unit>
+		  <trans-unit id="error">
+                <source>Error</source>
+            </trans-unit>
+		  <trans-unit id="noqueryfound_checkyourfilter">
+                <source>No query found. Please check your filter.</source>
+            </trans-unit>
+		  <trans-unit id="goback">
+                <source>Go Back</source>
+            </trans-unit>
+		  <trans-unit id="filename">
+                <source>export</source>
+            </trans-unit>
+		</body>
+	</file>
+</xliff>

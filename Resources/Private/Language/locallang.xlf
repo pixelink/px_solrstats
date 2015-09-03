@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2014-12-15T10:31:00Z" product-name="solr_statistic">
+	<file source-language="en" datatype="plaintext" original="messages" date="2014-12-15T10:31:00Z" product-name="px_solrstats">
 		<header/>
 		<body>
 		  <trans-unit id="title">
                 <source>Solr Statistics</source>
+            </trans-unit>
+            <trans-unit id="amountSearchWords">
+                <source>Durchschn. Anzahl an Suchwörtern je Suchanfragen</source>
+            </trans-unit>
+            <trans-unit id="lastWeekSearchwords">
+                <source>Top Suchworte der letzten Woche</source>
             </trans-unit>
 		  <trans-unit id="filetype">
                 <source>File Type</source>

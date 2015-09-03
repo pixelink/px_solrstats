@@ -1,15 +1,44 @@
 <?php
-class Tx_SolrStatistics_Controller_SearchController 
+class Tx_PxSolrstats_Controller_SearchController
       extends Tx_Extbase_MVC_Controller_ActionController {
 
 
-	const PHPEXCEL_PATH = '../../typo3conf/ext/solr_statistics/Lib/phpexcel/PHPExcel.php';
+	const PHPEXCEL_PATH = '../../typo3conf/ext/px_solrstats/Lib/phpexcel/PHPExcel.php';
 	
 	/**
 	 * Main Page. Shows only Filter Form
 	 */
 	public function indexAction() {
-	
+
+		$select = array(
+			'fields' => 'keywords, count(*) as cnt ',
+			'table' => 'tx_solr_statistics',
+			'where' => 'tstamp = ' . time() - (86400*7),
+			'group' => 'keywords',
+			'order' => 'cnt DESC',
+			'limit' => '0, 20',
+		);
+
+		$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery($select['fields'], $select['table'], $select['where'], $select['group'], $select['order'], $select['limit'] );
+
+		if ( $res->num_rows >= 1) {
+			echo "mehr als 1 zeile";
+			$this->view->assign('topkeywords', $res);
+
+		} else {
+			return false;
+		}
+
+
+		$searchWords = array(
+			'42',
+			'55',
+			'3',
+			'7'
+		);
+
+	$this->view->assign('searchwords', $searchWords);
+
 	}
 
 	/**
@@ -35,8 +64,8 @@ class Tx_SolrStatistics_Controller_SearchController
 	 */
 	private function exportFile($exportArguments) {
 
-		$output_file_name = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate( 'filename', 'solr_statistics' )."_".date('Y_m_d');
-		$lng_time = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate( 'time', 'solr_statistics' );
+		$output_file_name = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate( 'filename', 'px_solrstats' )."_".date('Y_m_d');
+		$lng_time = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate( 'time', 'px_solrstats' );
 		
 		require_once(self::PHPEXCEL_PATH);
 
@@ -79,11 +108,11 @@ class Tx_SolrStatistics_Controller_SearchController
 				unset($exportArguments['fields'][$key]);
 			} else {
 				$dbSelect .= ",".$exportArguments['fields'][$key];
-				$topLine[] = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate( $exportArguments['fields'][$key], 'solr_statistics' );
+				$topLine[] = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate( $exportArguments['fields'][$key], 'px_solrstats' );
 			}
 		}
 		//Query from DB
-		$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery($dbSelect, 'tx_solr_statistics', 'tstamp <= '. intval($to) .' AND tstamp >= '.intval($from) );
+		$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery($dbSelect, 'tx_px_solrstats', 'tstamp <= '. intval($to) .' AND tstamp >= '.intval($from) );
 
 		if ( $res->num_rows < 1) {
 			$this->redirect("error");

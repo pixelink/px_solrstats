@@ -1,9 +1,12 @@
+{namespace pixelink=PIXELINK\PxSolrstats\ViewHelpers}
+
+
 <!--Div that will hold the pie chart-->
 <div id="chart_div"></div>
 
 <h2>{f:translate(id: 'lastWeekSearchwords')}</h2>
 
-<f:for each="{topkeywords}" as="keyword" iteration="iterator" >
+<f:for each="{topkeywords}" as="keyword" iteration="iterator">
 
     {iterator.cycle}. <f:format.htmlentitiesDecode>{keyword.keywords}</f:format.htmlentitiesDecode> ({keyword.cnt})<br/>
 
@@ -30,13 +33,9 @@
         data.addColumn('number', 'Slices');
         <![CDATA[ data.addRows([ ]]>
 
-                <f:for each="{searchwords}" as="searchword" key="label" iteration="iterator" >
+            <pixelink:dynamicarray wordcount="{wordcount}" label="word count" />
 
-                        ['{iterator.cycle} word request', {searchword} ],
-
-        </f:for>
-
-            <![CDATA[ ]); ]]>
+        <![CDATA[ ]); ]]>
 
         // Set chart options
         <![CDATA[ var options = { ]]>

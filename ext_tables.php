@@ -1,8 +1,8 @@
 <?php
 
 if (TYPO3_MODE === 'BE') {
-    Tx_Extbase_Utility_Extension::registerModule(
-        $_EXTKEY,
+    \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
+        'PIXELINK.' . $_EXTKEY,
         'user',          // Main area
         'solrstatics',         // Name of the module
         '',             // Position of the module

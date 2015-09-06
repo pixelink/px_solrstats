@@ -1,6 +1,7 @@
 <?php
-class Tx_PxSolrstats_Controller_SearchController
-      extends Tx_Extbase_MVC_Controller_ActionController {
+namespace PIXELINK\PxSolrstats\Controller;
+
+class SearchController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  {
 
 
 	const PHPEXCEL_PATH = '../../typo3conf/ext/px_solrstats/Lib/phpexcel/PHPExcel.php';
@@ -10,34 +11,12 @@ class Tx_PxSolrstats_Controller_SearchController
 	 */
 	public function indexAction() {
 
-		$select = array(
-			'fields' => 'keywords, count(*) as cnt ',
-			'table' => 'tx_solr_statistics',
-			'where' => 'tstamp = ' . time() - (86400*7),
-			'group' => 'keywords',
-			'order' => 'cnt DESC',
-			'limit' => '0, 20',
-		);
+        $num_words = array();
+        $num_words = \PIXELINK\PxSolrstats\Utility\SolrStatistic::getWordCount();
+        $this->view->assign('wordcount', $num_words);
 
-		$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery($select['fields'], $select['table'], $select['where'], $select['group'], $select['order'], $select['limit'] );
-
-		if ( $res->num_rows >= 1) {
-			echo "mehr als 1 zeile";
-			$this->view->assign('topkeywords', $res);
-
-		} else {
-			return false;
-		}
-
-
-		$searchWords = array(
-			'42',
-			'55',
-			'3',
-			'7'
-		);
-
-	$this->view->assign('searchwords', $searchWords);
+		$searchWords = \PIXELINK\PxSolrstats\Utility\SolrStatistic::getTopSearchWords();
+		$this->view->assign('topkeywords', $searchWords);
 
 	}
 

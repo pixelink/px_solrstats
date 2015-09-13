@@ -1,16 +1,17 @@
 {namespace pixelink=PIXELINK\PxSolrstats\ViewHelpers}
 
 
-<h4>{f:translate(id: 'amountSearchWords')}</h4>
+<h4>{f:translate(id: 'searchTime')}</h4>
+<p>&nbsp;</p>
 <!--Div that will hold the pie chart-->
-<div id="chart_div"></div>
+<div id="gauge_div"></div>
 
 <!--Load the AJAX API-->
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script type="text/javascript">
 
     // Load the Visualization API and the piechart package.
-    google.load('visualization', '1.0', {'packages':['corechart']});
+    google.load('visualization', '1', {'packages':['gauge']});
 
     // Set a callback to run when the Google Visualization API is loaded.
     google.setOnLoadCallback(drawChart);
@@ -20,24 +21,27 @@
     // draws it.
     function drawChart() {
 
-        // Create the data table.
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Topping');
-        data.addColumn('number', 'Slices');
-        <![CDATA[ data.addRows([ ]]>
+        var data = google.visualization.arrayToDataTable([
+            ['Label', 'Value'],
+            ['Fastest', {fasttime}],
+            ['Average', {avgtime}],
+            ['Slowest', {slowesttime}]
+        ]);
 
-            <pixelink:dynamicarray wordcount="{wordcount}" label="word count" />
-
-        <![CDATA[ ]); ]]>
 
         // Set chart options
         <![CDATA[ var options = { ]]>
             'width':650,
-            'height':300
+            'height':300,
+            'redFrom': 90,
+            'redTo': 100,
+            'yellowFrom': 75,
+            'yellowTo': 90,
+            'minorTicks': 2
         <![CDATA[ }; ]]>
 
         // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+        var chart = new google.visualization.Gauge(document.getElementById('gauge_div'));
         chart.draw(data, options);
     }
 </script>

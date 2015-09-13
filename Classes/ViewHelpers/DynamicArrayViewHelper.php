@@ -25,17 +25,25 @@ class DynamicArrayViewHelper extends AbstractViewHelper
 
     public function render($wordcount, $label) {
 
-        ksort($wordcount);
+        if ( is_array( $wordcount )) {
 
-        $do = '';
 
-        foreach ($wordcount as $key => $value) {
+            ksort($wordcount);
 
-            $do .= "['$key $label', " . $value['sum'] . " ],";
+            $do = '';
 
+            foreach ($wordcount as $key => $value) {
+
+                $do .= "['$key $label', " . $value['sum'] . " ],";
+
+            }
+
+            return $do;
+
+
+        } else {
+            return false;
         }
-
-        return $do;
 
     }
 

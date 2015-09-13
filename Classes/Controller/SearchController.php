@@ -3,6 +3,11 @@ namespace PIXELINK\PxSolrstats\Controller;
 
 class SearchController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController  {
 
+	/**
+	 * @var \PIXELINK\PxSolrstats\Utility\SolrStatistic
+	 * @inject
+	 */
+	protected $solrStats;
 
 	const PHPEXCEL_PATH = '../../typo3conf/ext/px_solrstats/Lib/phpexcel/PHPExcel.php';
 	
@@ -11,12 +16,38 @@ class SearchController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
 	 */
 	public function indexAction() {
 
+		$test = $this->solrStats->getSearchRequests();
+
+
         $num_words = array();
-        $num_words = \PIXELINK\PxSolrstats\Utility\SolrStatistic::getWordCount();
+
+		// how many words does an request had
+        $num_words = $this->solrStats->getWordCount();
         $this->view->assign('wordcount', $num_words);
 
-		$searchWords = \PIXELINK\PxSolrstats\Utility\SolrStatistic::getTopSearchWords();
+		// highest performing search words
+		$searchWords = $this->solrStats->getTopSearchWords();
 		$this->view->assign('topkeywords', $searchWords);
+
+		// how many search requests has been made
+		$requests = $this->solrStats->getSearchRequests();
+		$this->view->assign('searchrequests', $requests);
+
+		// how many requests didn't get a result
+		$noResults = $this->solrStats->noResults();
+		$this->view->assign('noresults', $noResults);
+
+		// average processing time
+		$avgTime = $this->solrStats->processingTime('avg');
+		$this->view->assign('avgtime', $avgTime);
+
+		// fastest processing time
+		$fastestTime = $this->solrStats->processingTime('fastest');
+		$this->view->assign('fasttime', $fastestTime);
+
+		// slowest processing time
+		$slowestTime = $this->solrStats->processingTime('slowest');
+		$this->view->assign('slowesttime', $slowestTime);
 
 	}
 
@@ -76,7 +107,9 @@ class SearchController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
 		
 		//Time to timestampt
 		$from = strtotime( $exportArguments['from'] );
+		//$from = $this->solrStats->stringTimeConvert( $exportArguments['from'] );
 		$to = strtotime( $exportArguments['to'] ) + ( 60*60*24 - 1 ); //end of day
+
 
 		//Set Fields
 		$dbSelect = "tstamp";

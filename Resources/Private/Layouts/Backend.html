@@ -1,6 +1,6 @@
 
   <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
-<f:be.container>
+<f:be.container loadJQuery="true" includeCssFiles="{0: '{f:uri.resource(path:\'Css/bootstrap.min.css\')}', 1: '{f:uri.resource(path:\'Css/bootstrap-theme.min.css\')}'}" includeJsFiles="{0: '{f:uri.resource(path:\'Js/bootstrap.min.js\')}' }" >
 	<div class="typo3-fullDoc">
 		<div id="typo3-docheader">
 			<div id="typo3-docheader-row1">
@@ -23,10 +23,42 @@
 			<div id="typo3-inner-docbody">
 				<f:flashMessages class="tx-extbase-flash-message" />
 				<div id="news-administration">
-					<f:render section="Content" />
-					<f:render partial="Charts" arguments="{_all}"/>
+					<h1>Solr Statistics</h1>
+
+					<!--
+					<ul id="myTabs" class="nav nav-tabs" role="tablist">
+						<li role="presentation" class="active"><a href="#stats" aria-controls="home" role="tab" data-toggle="tab">Stats</a></li>
+						<li role="presentation"><a href="#export" aria-controls="profile" role="tab" data-toggle="tab">Export</a></li>
+						<li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+					</ul>
+
+					-->
+
+
+							<div class="row">
+								<div class="col-md-6"><f:render partial="Charts" arguments="{_all}"/></div>
+								<div class="col-md-6"><f:render partial="ProcessTime" arguments="{_all}"/></div>
+							</div>
+
+							<f:render partial="SearchRequests" arguments="{_all}"/>
+
+							<div class="row">
+								<div class="col-md-4"><f:render partial="TopKeywords" arguments="{_all}"/></div>
+								<div class="col-md-4"><f:render partial="NoResults" arguments="{_all}"/></div>
+								<div class="col-md-4"></div>
+							</div>
+
+					</div>
+
+
 				</div>
 			</div>
+			<script type="text/javascript" >
+				$('#myTabs a').click(function (e) {
+					e.preventDefault()
+					$(this).tab('show')
+				})
+			</script>
 		</div>
 	</div>
 </f:be.container>

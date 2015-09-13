@@ -11,7 +11,7 @@
                 <source>Durchschn. Anzahl an Suchwörtern je Suchanfragen</source>
                 <target state="translated">Durchschn. Anzahl an Suchwörtern je Suchanfragen</target>
             </trans-unit>
-            <trans-unit id="amountSearchWords">
+            <trans-unit id="lastWeekSearchwords">
                 <source>Top Suchworte der letzten Woche</source>
                 <target state="translated">Top Suchworte der letzten Woche</target>
             </trans-unit>

@@ -1,0 +1,7 @@
+<h4>{f:translate(id: 'lastWeekSearchwords')}</h4>
+
+<f:for each="{topkeywords}" as="keyword" iteration="iterator">
+
+    {iterator.cycle}. <f:format.htmlentitiesDecode>{keyword.keywords}</f:format.htmlentitiesDecode> ({keyword.cnt})<br/>
+
+</f:for>

@@ -1,0 +1,7 @@
+<h4>{f:translate(id: 'noResultSearchwords')}</h4>
+
+<f:for each="{noresults}" as="result" iteration="iterator">
+
+    {iterator.cycle}. <f:format.htmlentitiesDecode>{result.keywords}</f:format.htmlentitiesDecode> ({result.cnt})<br/>
+
+</f:for>

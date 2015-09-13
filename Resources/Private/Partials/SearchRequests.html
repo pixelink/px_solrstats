@@ -1,9 +1,8 @@
-{namespace pixelink=PIXELINK\PxSolrstats\ViewHelpers}
 
 
-<h4>{f:translate(id: 'amountSearchWords')}</h4>
+<h4>{f:translate(id: 'searchRequests')}</h4>
 <!--Div that will hold the pie chart-->
-<div id="chart_div"></div>
+<div id="request_div"></div>
 
 <!--Load the AJAX API-->
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
@@ -22,22 +21,32 @@
 
         // Create the data table.
         var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Topping');
-        data.addColumn('number', 'Slices');
+        data.addColumn('date', 'Date');
+        data.addColumn('number', 'Requests');
         <![CDATA[ data.addRows([ ]]>
 
-            <pixelink:dynamicarray wordcount="{wordcount}" label="word count" />
+            <f:for each="{searchrequests}" as="request" iteration="iteratior">
+                {request}
+            </f:for>
 
         <![CDATA[ ]); ]]>
 
         // Set chart options
-        <![CDATA[ var options = { ]]>
-            'width':650,
-            'height':300
-        <![CDATA[ }; ]]>
+        var options = {
+            width: 1024,
+            height: 400,
+            hAxis: {
+                format: 'd.M.yy',
+                gridlines: {count: 15}
+            },
+            vAxis: {
+                gridlines: {color: 'none'},
+                minValue: 0
+            }
+        };
 
         // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+        var chart = new google.visualization.LineChart(document.getElementById('request_div'));
         chart.draw(data, options);
     }
 </script>

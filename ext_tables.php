@@ -4,7 +4,7 @@ if (TYPO3_MODE === 'BE') {
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
         'PIXELINK.' . $_EXTKEY,
         'user',          // Main area
-        'solrstatics',         // Name of the module
+        'solrstatics',   // Name of the module
         '',             // Position of the module
         array(          // Allowed controller action combinations
             'Search' => 'index,export,error',

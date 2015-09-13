@@ -13,12 +13,12 @@
 
 	<h1>{f:translate(id: 'title')}</h1>
 
-	
+
 	<f:form method="post" action="export" name="export" object="{export}">
 		<p>
 			<strong>{f:translate(id: 'filetype')}:</strong> <f:form.select property="fileType" options="{CSV: '.CSV', XLS: '.XLS', XLSX: '.XLSX'}" />
 		</p>
-		<p> 
+		<p>
 			<strong>{f:translate(id: 'date')}:</strong> <label for="from">{f:translate(id: 'from')}</label>
 			<f:form.textfield id="from" property="from" placeholder="DD.MM.YYYY" />
 			<label for="to">{f:translate(id: 'to')}</label>
@@ -38,7 +38,7 @@
 	    <f:form.submit value="{f:translate(id: 'generatefile')}" />
 	</f:form>
 
-	
+
 	   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 	  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 	  <script>

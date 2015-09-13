@@ -12,6 +12,15 @@
             <trans-unit id="lastWeekSearchwords">
                 <source>Top Suchworte der letzten Woche</source>
             </trans-unit>
+            <trans-unit id="noResultSearchwords">
+                <source>Suchworte die kein Ergebnis lieferten</source>
+            </trans-unit>
+            <trans-unit id="searchRequests">
+                            <source>Suchanfrage</source>
+                        </trans-unit>
+            <trans-unit id="searchTime">
+                <source>Durchschn. Zeit bis zur Ergebnisanzeige</source>
+            </trans-unit>
 		  <trans-unit id="filetype">
                 <source>File Type</source>
             </trans-unit>
